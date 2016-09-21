@@ -1,0 +1,14 @@
+pipeline:
+  install:
+    image: node:${NODE_VERSION}
+    commands:
+      - npm install
+
+  lint:
+    image: node:${NODE_VERSION}
+    commands:
+      - npm run lint
+
+matrix:
+  NODE_VERSION:
+    - 6
