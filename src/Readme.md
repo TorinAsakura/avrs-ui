@@ -5,3 +5,4 @@
     * [Поле ввода](input/Readme.md)
     * [Ссылка](link/Readme.md)
     * [Выбор дат](datepicker/Readme.md)
+    * [Расписание](schedule/Readme.md)
