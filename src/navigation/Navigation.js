@@ -4,8 +4,11 @@ import { StyleSheet } from 'elementum'
 const styles = StyleSheet.create({
   self: {
     width: '100%',
+    height: '100%',
+    display: 'flex',
     background: '#ffffff',
-    borderBottom: '2px solid #eee',
+    alignItems: 'flex-start',
+    flexDirection: 'column',
   },
 })
 

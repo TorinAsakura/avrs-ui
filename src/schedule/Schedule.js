@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import { ColumnLayout, RowLayout, Layout } from 'flex-layouts'
+import { Column, Row, Layout } from 'flex-layouts'
 import Day from './day/Day'
 import Time from './time/Time'
 import Header from './header/Header'
@@ -15,12 +15,12 @@ const defaultValue = {
 }
 
 const Schedule = ({ value = defaultValue, onChange = f => f }) => (
-  <RowLayout>
+  <Row>
     <Layout>
       <Header days={Object.keys(value)} />
     </Layout>
     <Layout>
-      <ColumnLayout>
+      <Column>
         <Layout basis='60px'>
           <Time />
         </Layout>
@@ -33,9 +33,9 @@ const Schedule = ({ value = defaultValue, onChange = f => f }) => (
             />
           </Layout>
         ))}
-      </ColumnLayout>
+      </Column>
     </Layout>
-  </RowLayout>
+  </Row>
 )
 
 Schedule.propTypes = {
