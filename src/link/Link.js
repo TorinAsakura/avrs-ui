@@ -3,20 +3,23 @@ import { StyleSheet } from 'elementum'
 
 const styles = StyleSheet.create({
   self: {
-    fontFamily: '"Ubuntu",sans-serif',
-    fontWeight: 400,
     textDecoration: 'none',
-    display: 'inline-flex',
-    boxSizing: 'border-box',
     cursor: 'pointer',
+    '&:hover': {
+      textDecoration: 'underline',
+      '& *': {
+        textDecoration: 'underline',
+      },
+    },
   },
   'align=center': {
     alignItems: 'center',
   },
 })
 
-const Link = ({ children, align, onClick }) => (
+const Link = ({ children, href, align, onClick }) => (
   <a
+    href={href}
     onClick={onClick}
     className={styles({ align })}
   >
@@ -30,6 +33,7 @@ Link.propTypes = {
     PropTypes.element,
     PropTypes.array,
   ]),
+  href: PropTypes.string,
   onClick: PropTypes.func,
   align: PropTypes.string,
 }
