@@ -1,6 +1,6 @@
 import React from 'react'
 import moment from 'moment'
-import { RowLayout, Layout } from 'flex-layouts'
+import { Row, Layout } from 'flex-layouts'
 import Hour from './Hour'
 
 const getHours = () => {
@@ -10,7 +10,7 @@ const getHours = () => {
 }
 
 const Time = () => (
-  <RowLayout>
+  <Row>
     {getHours().map((hour, index) => (
       <Layout key={index}>
         <Hour>
@@ -18,7 +18,7 @@ const Time = () => (
         </Hour>
       </Layout>
     ))}
-  </RowLayout>
+  </Row>
 )
 
 export default Time

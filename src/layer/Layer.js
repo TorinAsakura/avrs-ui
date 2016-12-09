@@ -6,7 +6,7 @@ import { expose } from './utils'
 
 class Layer extends Component {
   static propTypes = {
-    target: PropTypes.instanceOf(Element),
+    // target: PropTypes.instanceOf(Element),
     align: PropTypes.string,
     classes: PropTypes.string,
     onOutsideClick: PropTypes.func,

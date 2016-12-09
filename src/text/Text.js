@@ -1,15 +1,18 @@
+/* eslint-disable global-require */
 import React, { PropTypes } from 'react'
 import { StyleSheet } from 'elementum'
-import fonts from 'google-fonts'
+import { canUseDOM } from 'fbjs/lib/ExecutionEnvironment'
 
-fonts.add({ Ubuntu: [300, 400, 500, '&subset=cyrillic'] })
+if (canUseDOM) {
+  require('google-fonts').add({ Ubuntu: [300, 400, 500, 700, '&subset=cyrillic'] })
+}
 
 const styles = StyleSheet.create({
   self: {
     display: 'inline-flex',
-    fontFamily: '"Ubuntu",sans-serif',
+    fontFamily: '"Ubuntu", sans-serif',
     fontWeight: 400,
-    lineHeight: 1.1,
+    lineHeight: 1.2,
     color: '#000000',
   },
   'size=xxlarge': {
@@ -36,22 +39,61 @@ const styles = StyleSheet.create({
   'color=blue400': {
     color: '#0288d1',
   },
+  'color=blue700': {
+    color: '#0665af',
+  },
+  'color=gray200': {
+    color: '#aeb7be',
+  },
+  'color=gray250': {
+    color: '#657684',
+  },
   'color=gray300': {
     color: '#757575',
+  },
+  'color=gray400': {
+    color: '#505458',
+  },
+  'color=black400': {
+    color: '#303336',
   },
   'color=red400': {
     color: '#ff0000',
   },
+  'color=orange500': {
+    color: '#ff6701',
+  },
+  'color=green500': {
+    color: '#00bb27',
+  },
+  'color=white': {
+    color: '#ffffff',
+  },
   'weight=light': {
     fontWeight: 300,
   },
-  'weight=bold': {
+  'weight=medium': {
     fontWeight: 500,
+  },
+  'weight=bold': {
+    fontWeight: 700,
+  },
+  'align=center': {
+    textAlign: 'center',
+  },
+  'lineHeight=extended': {
+    lineHeight: 1.4,
+  },
+  'lineHeight=large': {
+    lineHeight: 1.5,
   },
 })
 
-const Text = ({ children, size = 'normal', color, weight }) => (
-  <span className={styles({ size, color, weight })}>
+const Text = ({ id, children, size = 'normal', color, weight, align, lineHeight }) => (
+  <span
+    id={id}
+    className={styles({ size, color, weight, align, lineHeight })}
+  >
     {children}
   </span>
 )
