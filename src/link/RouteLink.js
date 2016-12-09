@@ -9,6 +9,12 @@ const styles = StyleSheet.create({
     textDecoration: 'none',
     display: 'inline-flex',
     boxSizing: 'border-box',
+    '&:hover': {
+      textDecoration: 'underline',
+      '& *': {
+        textDecoration: 'underline',
+      },
+    },
   },
   'align=center': {
     alignItems: 'center',
@@ -30,7 +36,6 @@ RouteLink.propTypes = {
     PropTypes.element,
     PropTypes.array,
   ]),
-  to: PropTypes.string,
   align: PropTypes.string,
 }
 

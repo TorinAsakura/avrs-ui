@@ -30,3 +30,33 @@ const LogoWithTextExample = () => (
 
 export default LogoWithTextExample
 ```
+
+### Логотип светлый
+
+```
+import React from 'react'
+import LogoWhite from './LogoWhite'
+
+const LogoExample = () => (
+  <div style={{ margin: '20px', padding: '20px', background: '#0288D1' }}>
+    <LogoWhite />
+  </div>
+)
+
+export default LogoExample
+```
+
+### Логотип светлый с текстом
+
+```
+import React from 'react'
+import LogoWhiteWithText from './LogoWhiteMonoWithText'
+
+const LogoWhiteWithTextExample = () => (
+  <div style={{ margin: '20px', padding: '20px', background: '#0288D1' }}>
+    <LogoWhiteWithText />
+  </div>
+)
+
+export default LogoWhiteWithTextExample
+```

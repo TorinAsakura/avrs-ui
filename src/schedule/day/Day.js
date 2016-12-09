@@ -170,7 +170,7 @@ class Day extends Component {
           }
 
           return result
-        }, values)
+        }, values),
       )
     } else {
       this.onChange(values.filter(value => !matched.includes(value)))
