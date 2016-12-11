@@ -1,11 +1,6 @@
 /* eslint-disable global-require */
 import React, { PropTypes } from 'react'
 import { StyleSheet } from 'elementum'
-import { canUseDOM } from 'fbjs/lib/ExecutionEnvironment'
-
-if (canUseDOM) {
-  require('google-fonts').add({ Ubuntu: [300, 400, 500, 700, '&subset=cyrillic'] })
-}
 
 const styles = StyleSheet.create({
   self: {
