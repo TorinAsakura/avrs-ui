@@ -3,7 +3,11 @@ import { StyleSheet } from 'elementum'
 
 const styles = StyleSheet.create({
   self: {
+    fontFamily: '"Ubuntu",sans-serif',
+    fontWeight: 400,
     textDecoration: 'none',
+    display: 'inline-flex',
+    boxSizing: 'border-box',
     cursor: 'pointer',
     '&:hover': {
       textDecoration: 'underline',

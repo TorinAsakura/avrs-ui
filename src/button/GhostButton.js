@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     borderWidth: '1px',
     borderStyle: 'solid',
     background: 'transparent',
+    textDecoration: 'none',
     outline: 0,
   },
   rounded: {
