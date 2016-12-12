@@ -18,3 +18,4 @@
     * [Notification](notification/Readme.md)
     * [Chart](chart/Readme.md)
     * [Network](network/Readme.md)
+    * [Chat](chat/Readme.md)
