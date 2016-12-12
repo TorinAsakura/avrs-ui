@@ -18,6 +18,7 @@ import RocketIcon from './RocketIcon'
 import PlayIcon from './PlayIcon'
 import StopIcon from './StopIcon'
 import LockIcon from './LockIcon'
+import MessagesIcon from './MessagesIcon'
 
 export {
   AccountIcon,
@@ -40,4 +41,5 @@ export {
   PlayIcon,
   StopIcon,
   LockIcon,
+  MessagesIcon,
 }

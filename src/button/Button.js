@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
     borderColor: '#0288d1',
     outline: 0,
+    textDecoration: 'none',
     '&:active': {
       background: '#0665af',
     },
