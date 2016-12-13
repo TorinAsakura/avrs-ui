@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import d3Selection from 'd3-selection'
+import * as d3Selection from 'd3-selection'
 import { isDomainEquals } from './utils'
 
 class Dots extends Component {

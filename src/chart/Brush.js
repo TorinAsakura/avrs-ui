@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import d3Selection from 'd3-selection'
-import d3Brush from 'd3-brush'
+import * as d3Selection from 'd3-selection'
+import * as d3Brush from 'd3-brush'
 
 class Brush extends Component {
   componentDidMount() {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet } from 'elementum'
-import d3Selection from 'd3-selection'
-import d3Axis from 'd3-axis'
+import * as d3Selection from 'd3-selection'
+import * as d3Axis from 'd3-axis'
 
 const styles = StyleSheet.create({
   self: {
