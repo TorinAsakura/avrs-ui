@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import d3Selection from 'd3-selection'
-import d3Zoom from 'd3-zoom'
+import * as d3Selection from 'd3-selection'
+import * as d3Zoom from 'd3-zoom'
 
 class Zoom extends Component {
   static defaultProps = {

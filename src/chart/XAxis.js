@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import moment from 'moment'
 import { StyleSheet } from 'elementum'
-import d3Selection from 'd3-selection'
-import d3Axis from 'd3-axis'
+import * as d3Selection from 'd3-selection'
+import * as d3Axis from 'd3-axis'
 import { isDomainEquals } from './utils'
 
 const styles = StyleSheet.create({
