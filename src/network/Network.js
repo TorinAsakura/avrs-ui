@@ -3,9 +3,9 @@
 /* eslint-disable no-underscore-dangle */
 import React, { Component } from 'react'
 import { StyleSheet } from 'elementum'
-import d3Selection from 'd3-selection'
-import d3Hierarchy from 'd3-hierarchy'
-import d3Zoom from 'd3-zoom'
+import * as d3Selection from 'd3-selection'
+import * as d3Hierarchy from 'd3-hierarchy'
+import * as d3Zoom from 'd3-zoom'
 import { diagonal } from './utils'
 
 const styles = StyleSheet.create({

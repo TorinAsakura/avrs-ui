@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import d3Selection from 'd3-selection'
-import d3Shape from 'd3-shape'
+import * as d3Selection from 'd3-selection'
+import * as d3Shape from 'd3-shape'
 import { isDomainEquals } from './utils'
 
 class Lines extends Component {
