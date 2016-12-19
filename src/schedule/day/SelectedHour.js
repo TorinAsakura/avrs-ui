@@ -3,20 +3,28 @@ import { StyleSheet } from 'elementum'
 
 const styles = StyleSheet.create({
   self: {
-    background: '#0288d1',
-    borderBottomColor: '#0288d1',
-    opacity: 0.6,
-    height: '100%',
     boxSizing: 'border-box',
-    position: 'relative',
-    left: '4px',
-    right: '4px',
-    width: 'calc(100% - 8px)',
+    position: 'absolute',
+    width: 'auto',
+    top: '1px',
+    bottom: '1px',
+    right: '-1px',
+    left: '-1px',
+    opacity: 0.3,
+  },
+  active: {
+    opacity: 0.5,
+    '&:hover': {
+      opacity: 0.6,
+    },
   },
 })
 
-const SelectedHour = () => (
-  <div className={styles()} />
+const SelectedHour = ({ active, color = '#0288D1' }) => (
+  <div
+    style={{ background: color }}
+    className={styles({ active })}
+  />
 )
 
 export default SelectedHour
