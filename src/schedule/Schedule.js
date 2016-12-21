@@ -1,54 +1,128 @@
-import React, { PropTypes } from 'react'
-import { Column, Row, Layout } from 'flex-layouts'
+import React from 'react'
+import moment from 'moment'
+import { StyleSheet } from 'elementum'
+import { Row, Layout } from 'flex-layouts'
 import Day from './day/Day'
 import Time from './time/Time'
-import Header from './header/Header'
 
-const defaultValue = {
-  mon: [],
-  tue: [],
-  wed: [],
-  thu: [],
-  fri: [],
-  sut: [],
-  sun: [],
+const styles = StyleSheet.create({
+  self: {
+    boxSizing: 'border-box',
+    border: '1px solid #f2f2f2',
+  },
+})
+
+const indexToDay = index =>
+  moment().startOf('isoweek')
+          .add(index, 'day')
+          .format('ddd')
+          .toLowerCase()
+
+const weekDays = Array.from(Array(7).keys()).map(indexToDay)
+
+const defaultValues = [{
+  values: weekDays.reduce((result, day) => ({ ...result, [day]: [] }), {}),
+}]
+
+const normalizeValues = values =>
+  values.map((value) => {
+    const missed = weekDays.reduce((result, day) => {
+      if (!Array.isArray(value.values[day])) {
+        return { ...result, [day]: [] }
+      }
+
+      return result
+    }, {})
+
+    return {
+      ...value,
+      values: {
+        ...value.values,
+        ...missed,
+      },
+    }
+  })
+
+const groupByDay = (values) => {
+  const items = weekDays.reduce((result, day) => {
+    const grouped = values.map(value => ({
+      color: value.color,
+      active: value.active,
+      values: value.values[day],
+    }))
+
+    return {
+      ...result,
+      [day]: grouped,
+    }
+  }, {})
+
+  return items
 }
 
-const Schedule = ({ value = defaultValue, onChange = f => f }) => (
-  <Row>
-    <Layout>
-      <Header days={Object.keys(value)} />
-    </Layout>
-    <Layout>
-      <Column>
-        <Layout basis='60px'>
-          <Time />
+const calculateDayWith = (width, weekdayWidth) => (width - weekdayWidth) / 24
+
+const calculateDayHeight = height => height / 8
+
+const change = (values, day, hour, limit, onChange) => {
+  const res = values.reduce((result, value) => {
+    if (value.active) {
+      if (value.values[day].includes(hour)) {
+        return [...result, {
+          ...value,
+          values: {
+            ...value.values,
+            [day]: value.values[day].filter(item => item !== hour),
+          },
+        }]
+      } else if (value.values[day].length < limit) {
+        return [...result, {
+          ...value,
+          values: {
+            ...value.values,
+            [day]: value.values[day].concat([hour]),
+          },
+        }]
+      }
+    }
+
+    return [...result, value]
+  }, [])
+
+  if (onChange) {
+    onChange(res)
+  }
+}
+
+const Schedule = ({ values = defaultValues, width, height, weekdayWidth = 140, limit = 10, onChange = f => f }) => (
+  <div
+    className={styles()}
+    style={{ width, height }}
+  >
+    <Row>
+      <Layout basis={`${calculateDayHeight(height)}px`}>
+        <Time
+          weekdayWidth={weekdayWidth}
+          dayWidth={calculateDayWith(width, weekdayWidth)}
+        />
+      </Layout>
+      {weekDays.map((day, index) => (
+        <Layout
+          key={index}
+          basis={`${calculateDayHeight(height)}px`}
+        >
+          <Day
+            day={day}
+            limit={limit}
+            weekdayWidth={weekdayWidth}
+            dayWidth={calculateDayWith(width, weekdayWidth)}
+            onChange={hour => change(normalizeValues(values), day, hour, limit, onChange)}
+            values={groupByDay(normalizeValues(values))[day]}
+          />
         </Layout>
-        {Object.keys(value).map((day, index) => (
-          <Layout key={day} basis='15%' shrink={1}>
-            <Day
-              values={value[day]}
-              firstDay={index === 0}
-              onChange={hours => onChange({ ...value, [day]: hours })}
-            />
-          </Layout>
-        ))}
-      </Column>
-    </Layout>
-  </Row>
+      ))}
+    </Row>
+  </div>
 )
-
-Schedule.propTypes = {
-  value: PropTypes.shape({
-    mon: PropTypes.arrayOf(PropTypes.string),
-    tue: PropTypes.arrayOf(PropTypes.string),
-    wed: PropTypes.arrayOf(PropTypes.string),
-    thu: PropTypes.arrayOf(PropTypes.string),
-    fri: PropTypes.arrayOf(PropTypes.string),
-    sut: PropTypes.arrayOf(PropTypes.string),
-    sun: PropTypes.arrayOf(PropTypes.string),
-  }),
-  onChange: PropTypes.func,
-}
 
 export default Schedule

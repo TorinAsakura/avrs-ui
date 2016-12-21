@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
     lineHeight: '15px',
     fontFamily: '"Ubuntu",sans-serif',
     fontWeight: 400,
+    WebkitAppRegion: 'no-drag',
     '&:hover': {
       opacity: 0.8,
     },

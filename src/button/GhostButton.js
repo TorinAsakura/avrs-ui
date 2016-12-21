@@ -22,6 +22,9 @@ const styles = StyleSheet.create({
   fill: {
     width: '100%',
   },
+  disabled: {
+    opacity: 0.6,
+  },
   'color=gray': {
     color: '#778997',
     borderColor: '#E5E5E5',
@@ -46,6 +49,7 @@ const styles = StyleSheet.create({
   'size=small': {
     paddingTop: '7px',
     paddingBottom: '7px',
+    fontWeight: 300,
   },
 })
 
@@ -53,7 +57,7 @@ const GhostButton = ({ children, disabled, rounded, round, color = 'gray', fill,
   <button
     disabled={disabled}
     className={styles({ disabled, rounded, round, color, fill, size })}
-    onClick={onClick}
+    onClick={disabled ? null : onClick}
   >
     {children}
   </button>
