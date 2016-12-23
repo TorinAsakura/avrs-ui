@@ -1,6 +1,39 @@
 DatePicker
 =======
 
+### DatePicker
+
+```
+import React, { Component } from 'react'
+import DatePicker from './DatePicker'
+
+class DatePickerExample extends Component {
+  state = {
+    selected: null,
+  }
+
+  onChange = selected => {
+    this.setState({ selected })
+  }
+
+  render() {
+    const { selected } = this.state
+
+    return (
+      <div style={{ padding: '20px 20px 300px 20px' }}>
+        <DatePicker
+          value={selected}
+          onChange={this.onChange}
+        />
+      </div>
+    )
+  }
+
+}
+
+export default DatePickerExample
+```
+
 ### DateRange
 
 ```
@@ -35,38 +68,4 @@ class DateRangeExample extends Component {
 }
 
 export default DateRangeExample
-```
-
-
-### DatePicker
-
-```
-import React, { Component } from 'react'
-import DatePicker from './DatePicker'
-
-class DatePickerExample extends Component {
-  state = {
-    selected: null,
-  }
-
-  onChange = selected => {
-    this.setState({ selected })
-  }
-
-  render() {
-    const { selected } = this.state
-
-    return (
-      <div style={{ padding: '20px 20px 300px 20px' }}>
-        <DatePicker
-          value={selected}
-          onChange={this.onChange}
-        />
-      </div>
-    )
-  }
-
-}
-
-export default DatePickerExample
 ```

@@ -4,7 +4,7 @@ import * as d3Brush from 'd3-brush'
 
 class Brush extends Component {
   componentDidMount() {
-    const { width, height, domain, xScale, onBrushed } = this.props
+    const { width, height, onBrushed } = this.props
 
     const element = this.element
 
@@ -12,11 +12,7 @@ class Brush extends Component {
                          .extent([[0, 0], [width, height]])
                          .on('brush end', onBrushed)
 
-    const start = domain[0] ? xScale(domain[0]) : 0
-    const end = domain[1] ? xScale(domain[1]) : width
-
     element.call(brush)
-           .call(brush.move, [start, end])
   }
 
   onSetRef = (element) => {

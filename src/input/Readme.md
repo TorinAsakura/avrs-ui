@@ -1,6 +1,38 @@
 Поле ввода
 ==========
 
+### Phone
+
+```
+import React, { Component } from 'react'
+import PhoneInput from './PhoneInput'
+
+class PhoneExample extends Component {
+  state = {
+    value: '',
+  }
+
+  onChange = (value) => {
+    this.setState({ value })
+  }
+
+  render() {
+    const { value } = this.state
+
+    return (
+      <div style={{ margin: '20px' }}>
+        <PhoneInput
+          value={value}
+          onChange={this.onChange}
+        />
+      </div>
+    )
+  }
+}
+
+export default PhoneExample
+```
+
 ### Placeholder
 
 ```
@@ -31,3 +63,5 @@ const DisabledExample = () => (
 
 export default DisabledExample
 ```
+
+

@@ -20,6 +20,9 @@ import StopIcon from './StopIcon'
 import LockIcon from './LockIcon'
 import MessagesIcon from './MessagesIcon'
 import ExitIcon from './ExitIcon'
+import CompleteIcon from './CompleteIcon'
+import MoneyIcon from './MoneyIcon'
+import DropdownIcon from './DropdownIcon'
 
 export {
   AccountIcon,
@@ -44,4 +47,7 @@ export {
   LockIcon,
   MessagesIcon,
   ExitIcon,
+  CompleteIcon,
+  MoneyIcon,
+  DropdownIcon,
 }
