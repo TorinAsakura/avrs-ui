@@ -19,3 +19,6 @@
     * [Chart](chart/Readme.md)
     * [Network](network/Readme.md)
     * [Chat](chat/Readme.md)
+    * [Steps](steps/Readme.md)
+    * [Select](select/Readme.md)
+    * [Checkbox](checkbox/Readme.md)

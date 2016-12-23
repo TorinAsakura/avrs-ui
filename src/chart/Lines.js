@@ -25,7 +25,7 @@ class Lines extends Component {
     const element = this.element
 
     const line = d3Shape.line()
-                        .curve(d3Shape.curveCatmullRom)
+                        .curve(d3Shape.curveMonotoneX)
                         .x(d => xScale(d.date))
                         .y(d => yScale(d.amount))
 
