@@ -16,7 +16,6 @@ class ComplexLineChart extends Component {
     axisHeight: 30,
     width: 700,
     height: 400,
-    brushDomain: [],
   }
 
   constructor(props, context) {
@@ -30,7 +29,7 @@ class ComplexLineChart extends Component {
     const start = d3Array.min(props.data[0].values, d => d.date)
     const end = d3Array.max(props.data[0].values, d => d.date)
 
-    const xScale = d3Scale.scaleTime().domain([start, end]).rangeRound([0, width])
+    const xScale = d3Scale.scaleTime().domain([start, end]).rangeRound([10, width - 20])
     const yScale = d3Scale.scaleLinear().rangeRound([linesHeight, 0])
     const zScale = d3Scale.scaleOrdinal(d3Scale.schemeCategory10)
 
@@ -125,7 +124,7 @@ class ComplexLineChart extends Component {
   }
 
   render() {
-    const { brushDomain, data } = this.props
+    const { data } = this.props
     const { width, height, linesHeight, brushHeight, brushOffset } = this.state
     const { xScale, yScale, zScale, xBrushScale, yBrushScale, zBrushScale } = this.state
 
@@ -179,7 +178,6 @@ class ComplexLineChart extends Component {
           xScale={xBrushScale}
           yScale={yBrushScale}
           zScale={zBrushScale}
-          domain={brushDomain}
           onBrushed={this.onBrushed}
           ref={this.onSetBrush}
         >

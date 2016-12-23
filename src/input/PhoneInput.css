@@ -1,0 +1,53 @@
+.react-tel-input {
+  width: 100%;
+}
+
+.react-tel-input input[type=text],
+.react-tel-input input[type=tel] {
+  width: 100%;
+  height: 32px;
+  box-sizing: border-box;
+  background: transparent;
+  box-shadow: none;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  padding: 0 12px;
+  padding-left: 44px;
+  font-family: "Ubuntu",sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #262626;
+  appearance: none;
+  outline: none;
+}
+
+.react-tel-input input[type=text]:focus,
+.react-tel-input input[type=tel]:focus {
+  border-color: #0288d1;
+}
+
+.react-tel-input .flag-dropdown {
+  background: transparent;
+  border-right-color: #e5e5e5;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  top: 1px;
+  bottom: 1px;
+  left: 1px;
+}
+
+.react-tel-input .country-list {
+  top: 33px;
+  width: 300px;
+  box-shadow: initial;
+  border-radius: 3px;
+  margin-left: -2px;
+  border-color: #e5e5e5;
+}
+
+.react-tel-input .country-list .divider {
+  padding-bottom: 0px;
+  margin-bottom: 0px; */
+  border-bottom-width: 0px;
+}
