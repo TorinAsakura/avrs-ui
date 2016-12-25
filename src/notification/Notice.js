@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 })
 
 const Notice = ({ children, style, color, onClick }) => (
-  <div style={{ ...style, position: 'relative', marginBottom: 10 }}>
+  <div style={{ ...style, position: 'relative', marginTop: 10 }}>
     <div
       className={styles({ color })}
       onClick={onClick}
