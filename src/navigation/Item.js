@@ -1,6 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import { StyleSheet } from 'elementum'
-import { Link } from 'react-router'
 
 const styles = StyleSheet.create({
   self: {
@@ -31,24 +30,13 @@ const styles = StyleSheet.create({
   },
 })
 
-const Item = ({ children, to, plain, onlyActiveOnIndex, border }) => (
-  <Link
-    to={to}
+const Item = ({ children, plain, border, onClick }) => (
+  <a
+    onClick={onClick}
     className={styles({ plain, border })}
-    activeClassName={styles({ active: true })}
-    onlyActiveOnIndex={onlyActiveOnIndex}
   >
     {children}
-  </Link>
+  </a>
 )
-
-Item.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.string,
-    PropTypes.array,
-  ]),
-  to: PropTypes.string,
-}
 
 export default Item

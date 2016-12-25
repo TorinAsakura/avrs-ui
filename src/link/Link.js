@@ -21,9 +21,10 @@ const styles = StyleSheet.create({
   },
 })
 
-const Link = ({ children, href, align, onClick }) => (
+const Link = ({ children, href, target, align, onClick }) => (
   <a
     href={href}
+    target={target}
     onClick={onClick}
     className={styles({ align })}
   >

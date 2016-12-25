@@ -1,19 +1,31 @@
 import React, { Component } from 'react'
 import { TransitionMotion, spring } from 'react-motion'
+import { StyleSheet } from 'elementum'
 import Notice from './Notice'
+
+const styles = StyleSheet.create({
+  self: {
+    position: 'fixed',
+    zIndex: 10,
+    bottom: '10px',
+    right: '10px',
+    display: 'flex',
+    flexDirection: 'column-reverse',
+  },
+})
 
 class Notification extends Component {
   onWillEnter() {
     return {
       opacity: 0,
-      top: 0,
+      bottom: 0,
     }
   }
 
   onWillLeave() {
     return {
       opacity: spring(0),
-      top: 10,
+      bottom: 10,
     }
   }
 
@@ -22,7 +34,7 @@ class Notification extends Component {
       key: node.key,
       style: {
         opacity: spring(1),
-        top: spring(10),
+        bottom: spring(10),
       },
       data: node,
     }))
@@ -32,7 +44,7 @@ class Notification extends Component {
     const { onDismiss } = this.props
 
     return (
-      <div style={{ position: 'fixed', zIndex: 10 }}>
+      <div className={styles()}>
         {elements.map(({ key, style, data: { color, message } }) => (
           <Notice
             key={key}
