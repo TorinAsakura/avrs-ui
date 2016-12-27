@@ -9,6 +9,10 @@ class RangeCalendar extends Component {
     onChange: PropTypes.func,
   }
 
+  static defaultProps = {
+    numberOfMonths: 2,
+  }
+
   constructor(props) {
     super(props)
     this.state = {
@@ -22,8 +26,10 @@ class RangeCalendar extends Component {
     const { onChange } = this.props
     const { from, to, isSelectingLastDay } = this.state
 
-    if (!isSelectingLastDay && from && to) {
-      onChange({ from, to })
+    if (!isSelectingLastDay && from && to && onChange) {
+      if (from !== this.props.from || to !== this.props.to) {
+        onChange({ from, to })
+      }
     }
   }
 
@@ -73,11 +79,12 @@ class RangeCalendar extends Component {
   }
 
   render() {
+    const { numberOfMonths } = this.props
     const { from, to } = this.state
 
     return (
       <Calendar
-        fromMonth={from}
+        numberOfMonths={numberOfMonths}
         selectedDays={day => DateUtils.isDayInRange(day, { from, to })}
         modifiers={{
           from: day => DateUtils.isSameDay(day, from),

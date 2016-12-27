@@ -75,6 +75,7 @@ class DatePicker extends Component {
         <Condition match={toggled}>
           <Layer onOutsideClick={onClick}>
             <Calendar
+              external
               selectedDays={day => DateUtils.isSameDay(value, day)}
               onDayClick={(event, day, { selected }) => {
                 onChange(selected ? null : day)
