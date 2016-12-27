@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
       borderRight: '3px solid #0288D1',
       opacity: '0',
       transition: 'transform 0.2s, opacity 0.1s',
-      '-webkit-backface-visibility': 'hidden',
     },
     '& > input': {
       opacity: '0',
@@ -38,6 +37,17 @@ const styles = StyleSheet.create({
       opacity: '1',
     },
   },
+  'type=desktop': {
+    width: '14px',
+    height: '14px',
+    border: '1px solid #505458',
+    borderRadius: '0px',
+    '&:before': {
+      transformOrigin: '75% 100%',
+      borderBottom: '2px solid #505458',
+      borderRight: '2px solid #505458',
+    },
+  },
   disabled: {
     opacity: '0.5',
     '& > input': {
@@ -46,8 +56,8 @@ const styles = StyleSheet.create({
   },
 })
 
-const Checkbox = ({ value, disabled, onChange }) => (
-  <div className={styles({ checked: value })}>
+const Checkbox = ({ value, type, disabled, onChange }) => (
+  <div className={styles({ checked: value, type })}>
     <input
       type='checkbox'
       checked={value}
