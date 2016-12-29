@@ -23,6 +23,7 @@ import ExitIcon from './ExitIcon'
 import CompleteIcon from './CompleteIcon'
 import MoneyIcon from './MoneyIcon'
 import DropdownIcon from './DropdownIcon'
+import DownloadAppIcon from './DownloadAppIcon'
 
 export {
   AccountIcon,
@@ -50,4 +51,5 @@ export {
   CompleteIcon,
   MoneyIcon,
   DropdownIcon,
+  DownloadAppIcon,
 }
