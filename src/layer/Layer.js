@@ -8,7 +8,7 @@ class Layer extends Component {
   static propTypes = {
     // target: PropTypes.instanceOf(Element),
     align: PropTypes.string,
-    classes: PropTypes.string,
+    // classes: PropTypes.string,
     onOutsideClick: PropTypes.func,
     children: PropTypes.element,
   }
