@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
       fill: '#657684',
     },
   },
-  'active=standard': {
+  'active=standart': {
     borderColor: '#0288d1',
     '& svg': {
       fill: '#0288d1',
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const PromoServicePlan = ({ name, active, type = 'basis', price, priceUnit, time, timeUnit, onClick }) => (
+const PromoServicePlan = ({ name, active, type = 'basis', time, cpu, memory, onClick }) => (
   <div
     className={styles({ type, active: active ? type : null })}
     onClick={onClick}
@@ -84,15 +84,15 @@ const PromoServicePlan = ({ name, active, type = 'basis', price, priceUnit, time
           weight='medium'
           color='black400'
         >
-          {price}
+          {time} Часов
         </Text>
       </Layout>
       <Layout>
         <Text
           color='gray250'
-          size='small'
+          size='xsmall'
         >
-          {priceUnit}
+          в сутки
         </Text>
       </Layout>
       <Layout basis='15px' />
@@ -102,15 +102,33 @@ const PromoServicePlan = ({ name, active, type = 'basis', price, priceUnit, time
           weight='medium'
           color='black400'
         >
-          {time}
+          {cpu} %
         </Text>
       </Layout>
       <Layout>
         <Text
           color='gray250'
-          size='small'
+          size='xsmall'
         >
-          {timeUnit}
+          загрузка CPU
+        </Text>
+      </Layout>
+      <Layout basis='15px' />
+      <Layout>
+        <Text
+          size='medium'
+          weight='medium'
+          color='black400'
+        >
+          {memory / 1024} GB
+        </Text>
+      </Layout>
+      <Layout>
+        <Text
+          color='gray250'
+          size='xsmall'
+        >
+          загрузка RAM
         </Text>
       </Layout>
       <Layout basis='35px' />

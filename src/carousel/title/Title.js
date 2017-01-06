@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     position: 'relative',
     flexDirection: 'column',
+    fontFamily: '"Ubuntu", sans-serif',
   },
 })
 
