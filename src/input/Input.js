@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import { StyleSheet } from 'elementum'
+import MaskedInput from 'react-maskedinput'
 
 const styles = StyleSheet.create({
   self: {
@@ -33,8 +34,20 @@ const styles = StyleSheet.create({
   },
 })
 
+const InputElement = (props) => {
+  if (props.mask) {
+    return (
+      <MaskedInput {...props} />
+    )
+  }
+
+  return (
+    <input {...props} />
+  )
+}
+
 const Input = ({ value, disabled, invalid, onChange, ...props }) => (
-  <input
+  <InputElement
     {...props}
     value={value}
     disabled={disabled}
