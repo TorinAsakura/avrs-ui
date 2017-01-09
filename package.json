@@ -39,6 +39,7 @@
     "react-day-picker": "^3.1.1",
     "react-dom": "^15.2.1",
     "react-intl-tel-input": "^3.7.0",
+    "react-maskedinput": "^3.3.4",
     "react-motion": "^0.4.5",
     "react-router": "^3.0.0",
     "react-telephone-input": "^3.8.6",
