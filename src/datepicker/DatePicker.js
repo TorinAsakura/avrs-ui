@@ -16,17 +16,21 @@ const styles = StyleSheet.create({
 
 class DatePicker extends Component {
   static defaultProps = {
-    placeholder: 'Select Date',
+    placeholder: 'ДД.ММ.ГГГГ',
     format: 'LL',
   }
 
-  state = {
-    value: null,
+  constructor(props, context) {
+    super(props, context)
+
+    this.state = {
+      value: props.value,
+    }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.value !== this.props.value) {
-      this.setState({ value: null })
+      this.setState({ value: nextProps.value })
     }
   }
 
@@ -34,31 +38,37 @@ class DatePicker extends Component {
     this.setState({ value })
   }
 
-  onEndEdit = () => {
-    const { value } = this.state
-    const { onChange } = this.props
+  onSelect = (event, day) => {
+    const { onChange, onClick } = this.props
+    const value = moment(new Date(day)).format('DD.MM.YYYY')
 
-    if (moment(value).isValid()) {
-      onChange(moment(value).toDate())
+    onChange(value)
+    onClick()
+  }
+
+  onEndEdit = () => {
+    const { onChange } = this.props
+    const { value } = this.state
+
+    if (onChange) {
+      onChange(value)
     }
   }
 
-  getValue() {
-    const { value } = this.state
+  getInitialMonth() {
+    const value = moment(this.state.value, 'DD.MM.YYYY', true)
 
-    if (value) {
-      return value
+    if (value.isValid()) {
+      return value.toDate()
     }
 
-    if (this.props.value) {
-      return moment(this.props.value).format('DD.MM.YYYY')
-    }
-
-    return ''
+    return new Date()
   }
 
   render() {
-    const { value, placeholder, invalid, toggled, onChange, onClick } = this.props
+    const { placeholder, invalid, toggled, onClick } = this.props
+    const { value } = this.state
+    const selectedDay = moment(value, 'DD.MM.YYYY', true).toDate()
 
     return (
       <div
@@ -66,9 +76,10 @@ class DatePicker extends Component {
         onClick={onClick}
       >
         <Input
+          value={value}
           invalid={invalid}
+          mask='11.11.1111'
           placeholder={placeholder}
-          value={this.getValue()}
           onBlur={this.onEndEdit}
           onChange={this.onChange}
         />
@@ -76,11 +87,9 @@ class DatePicker extends Component {
           <Layer onOutsideClick={onClick}>
             <Calendar
               external
-              selectedDays={day => DateUtils.isSameDay(value, day)}
-              onDayClick={(event, day, { selected }) => {
-                onChange(selected ? null : day)
-                onClick()
-              }}
+              initialMonth={this.getInitialMonth()}
+              selectedDays={day => DateUtils.isSameDay(selectedDay, day)}
+              onDayClick={this.onSelect}
             />
           </Layer>
         </Condition>
@@ -90,7 +99,6 @@ class DatePicker extends Component {
 }
 
 DatePicker.propTypes = {
-  value: PropTypes.instanceOf(Date),
   format: PropTypes.string,
   placeholder: PropTypes.string,
   toggled: PropTypes.bool,
