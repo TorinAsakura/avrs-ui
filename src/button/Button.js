@@ -41,13 +41,17 @@ const styles = StyleSheet.create({
     paddingTop: '7px',
     paddingBottom: '7px',
   },
+  disabled: {
+    opacity: 0.5,
+    cursor: 'initial',
+  },
 })
 
 const Button = ({ children, disabled, rounded, round, shadow, color, fill, size, onClick }) => (
   <button
     disabled={disabled}
     className={styles({ disabled, rounded, round, shadow, color, fill, size })}
-    onClick={onClick}
+    onClick={disabled ? null : onClick}
   >
     {children}
   </button>

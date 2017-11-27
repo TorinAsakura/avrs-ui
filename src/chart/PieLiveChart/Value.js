@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const formatValue = (value = 0) => Number(value * 100).toFixed()
+const formatValue = (value = 0) => Number(value * 100).toFixed(1)
 
 const Value = ({ children, x, y }) => (
   <text

@@ -8,18 +8,34 @@ services:
     ports:
       - "8518:80"
 
-  npm:
-    image: node
+  install:
+    image: node:7.9
     working_dir: /workspace
     volumes:
       - ./:/workspace
-    entrypoint: npm
+      - ~/yarn:/yarn
+    entrypoint: yarn install
+
+  yarn:
+    image: node:7.9
+    working_dir: /workspace
+    volumes:
+      - ./:/workspace
+      - ~/yarn:/yarn
+    entrypoint: yarn
+
+  lint:
+    image: node:7.9
+    working_dir: /workspace
+    volumes:
+      - ./:/workspace
+    entrypoint: yarn run lint
 
   dev:
-    image: node
+    image: node:7.9
     working_dir: /workspace
     volumes:
       - ./:/workspace
-    entrypoint: npm start
+    entrypoint: yarn start
     ports:
       - "3050:3030"

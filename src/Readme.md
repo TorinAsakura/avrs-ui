@@ -22,3 +22,4 @@
     * [Steps](steps/Readme.md)
     * [Select](select/Readme.md)
     * [Checkbox](checkbox/Readme.md)
+    * [Locale](locale/Readme.md)

@@ -64,8 +64,10 @@ const calculateDayWith = (width, weekdayWidth) => (width - weekdayWidth) / 24
 
 const calculateDayHeight = height => height / 8
 
-const change = (values, day, hour, limit, onChange) => {
+const change = (values, day, hour, onChange) => {
   const res = values.reduce((result, value) => {
+    const limit = value.limit || 10
+
     if (value.active) {
       if (value.values[day].includes(hour)) {
         return [...result, {
@@ -94,7 +96,7 @@ const change = (values, day, hour, limit, onChange) => {
   }
 }
 
-const Schedule = ({ values = defaultValues, width, height, weekdayWidth = 140, limit = 10, onChange = f => f }) => (
+const Schedule = ({ values = defaultValues, width, height, weekdayWidth = 140, onChange = f => f }) => (
   <div
     className={styles()}
     style={{ width, height }}
@@ -113,10 +115,9 @@ const Schedule = ({ values = defaultValues, width, height, weekdayWidth = 140, l
         >
           <Day
             day={day}
-            limit={limit}
             weekdayWidth={weekdayWidth}
             dayWidth={calculateDayWith(width, weekdayWidth)}
-            onChange={hour => change(normalizeValues(values), day, hour, limit, onChange)}
+            onChange={hour => change(normalizeValues(values), day, hour, onChange)}
             values={groupByDay(normalizeValues(values))[day]}
           />
         </Layout>

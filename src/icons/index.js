@@ -24,6 +24,8 @@ import CompleteIcon from './CompleteIcon'
 import MoneyIcon from './MoneyIcon'
 import DropdownIcon from './DropdownIcon'
 import DownloadAppIcon from './DownloadAppIcon'
+import MessageIcon from './MessageIcon'
+import FlagsIcon from './FlagsIcon'
 
 export {
   AccountIcon,
@@ -52,4 +54,6 @@ export {
   MoneyIcon,
   DropdownIcon,
   DownloadAppIcon,
+  MessageIcon,
+  FlagsIcon,
 }

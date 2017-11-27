@@ -1,14 +1,10 @@
 pipeline:
   install:
-    image: node:${NODE_VERSION}
+    image: node:7.9
     commands:
-      - npm install
+      - yarn install
 
   lint:
-    image: node:${NODE_VERSION}
+    image: node:7.9
     commands:
-      - npm run lint
-
-matrix:
-  NODE_VERSION:
-    - 6
+      - yarn run lint

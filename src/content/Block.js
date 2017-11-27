@@ -27,11 +27,17 @@ const styles = StyleSheet.create({
   'border=green': {
     borderTop: '4px solid #00BB27',
   },
+  'border=hidden': {
+    borderWidth: '0px',
+  },
   'attach=bottom': {
     borderBottomWidth: '0px',
   },
   'fill=blue': {
     background: '#1C5D98',
+  },
+  'fill=transparent': {
+    background: 'transparent',
   },
 })
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { Link, withRouter } from 'react-router'
 import { StyleSheet } from 'elementum'
 
 const styles = StyleSheet.create({
@@ -46,14 +46,15 @@ const styles = StyleSheet.create({
   },
 })
 
-const PointerLink = ({ to, children }) => (
+const isActive = (to, { pathname }) => pathname === to
+
+const PointerLink = ({ to, children, router }) => (
   <Link
     to={to}
-    className={styles()}
-    activeClassName={styles({ active: true })}
+    className={styles({ active: isActive(to, router.getCurrentLocation()) })}
   >
     {children}
   </Link>
 )
 
-export default PointerLink
+export default withRouter(PointerLink)

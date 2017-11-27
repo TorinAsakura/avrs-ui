@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const PromoServicePlan = ({ name, active, type = 'basis', time, cpu, memory, onClick }) => (
+const PromoServicePlan = ({ name, active, type = 'basis', time, cpu, memory, price, messages = {}, onClick }) => (
   <div
     className={styles({ type, active: active ? type : null })}
     onClick={onClick}
@@ -84,7 +84,7 @@ const PromoServicePlan = ({ name, active, type = 'basis', time, cpu, memory, onC
           weight='medium'
           color='black400'
         >
-          {time} Часов
+          {time} {messages.hours}
         </Text>
       </Layout>
       <Layout>
@@ -92,7 +92,7 @@ const PromoServicePlan = ({ name, active, type = 'basis', time, cpu, memory, onC
           color='gray250'
           size='xsmall'
         >
-          в сутки
+          {messages.perDay}
         </Text>
       </Layout>
       <Layout basis='15px' />
@@ -110,7 +110,7 @@ const PromoServicePlan = ({ name, active, type = 'basis', time, cpu, memory, onC
           color='gray250'
           size='xsmall'
         >
-          загрузка CPU
+          {messages.cpu}
         </Text>
       </Layout>
       <Layout basis='15px' />
@@ -128,7 +128,25 @@ const PromoServicePlan = ({ name, active, type = 'basis', time, cpu, memory, onC
           color='gray250'
           size='xsmall'
         >
-          загрузка RAM
+          {messages.memory}
+        </Text>
+      </Layout>
+      <Layout basis='15px' />
+      <Layout>
+        <Text
+          size='medium'
+          weight='medium'
+          color='black400'
+        >
+          {price} €
+        </Text>
+      </Layout>
+      <Layout>
+        <Text
+          color='gray250'
+          size='xsmall'
+        >
+          {messages.price}
         </Text>
       </Layout>
       <Layout basis='35px' />
